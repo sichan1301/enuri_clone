@@ -1,25 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
+
 import './App.css';
+import { Category } from './data/data';
 
 function App() {
+
+  
+  // const handleMouseEnter = () => {
+  //   setDisplayMenu(true)
+  // }
+
+  // const handleMouseLeave = () => {
+  //   setDisplayMenu(false)
+  // }
+
+  const handleClick = () => {
+
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {Category.map(category => (<><h1>{category.title}</h1>
+        {
+          <ul>
+            {category.menus.map( menu => (<>
+              <h2>{menu.title}</h2>
+              {menu.menu.map(menu => <li>{menu.title}</li>
+              )}
+
+            </>))}
+          </ul>
+        }
+      
+      </>))}
+    </>
   );
 }
 
