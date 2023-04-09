@@ -1,22 +1,14 @@
 import { createSlice,configureStore } from "@reduxjs/toolkit";
 
-interface IState {
-  categoryIdx: number,
-  menusIdx:number,
-  menuIdx:number,
-  subMenuIdx:number
-}
-
 const enuriIdx = createSlice({
   name: 'enuriIdx',
-
   initialState:{
     categoryIdx: 0,
     menusIdx:0,
     menuIdx:0,
-    subMenuIdx:0
+    subMenuIdx:0,
+    imgIdx:0
   },
-
   reducers: {
     updateIdx(state,action) {
       state = {...state, ...action.payload}
@@ -24,7 +16,6 @@ const enuriIdx = createSlice({
     }
   },
 })
-
 
 export const store = configureStore({
   reducer : enuriIdx.reducer

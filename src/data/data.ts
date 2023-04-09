@@ -35,7 +35,7 @@ export const category:CategoryType[] = [
         type:"가이드"
       }
     ],
-    imgSrc:["cost.jpg","free.jpg"],
+    imgSrc:["first","second","third","fourth","fifth"],
     menus:[
       {
         title:"TV/영상가전",
@@ -552,7 +552,7 @@ export const category:CategoryType[] = [
         type:"가이드"
       }
     ],
-    imgSrc:["cost.jpg","free.jpg"],
+    imgSrc:["first","second","third","fourth","fifth"],
     menus:[
       {
         title:"컴퓨터/모니터/복합기",
