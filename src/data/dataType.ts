@@ -5,14 +5,20 @@ export type CategoryType = {
   menus:menusType
 }
 
+export type adType = {
+  text:string,
+  link:string,
+  type:"가이드" | "뉴스" |"기획전"
+}[]
 
-export type adType = textLink[]
 export type imgType = string[]
 
 export type textLink={
   text:string,
-  link:string
+  link:string,
+  badge:badgeType
 }
+export type badgeType = "N" | "H" | ""
 
 export type menusType = {
   title:string,
@@ -27,5 +33,6 @@ export type menuType = {
 export type subMenuType = {
   text:string,
   link:string,
+  badge:badgeType,
   sub_subMenu:textLink[]
 }[]
