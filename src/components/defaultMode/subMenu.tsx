@@ -1,6 +1,6 @@
-import { category } from "../data/data"
+import { category } from "../../data/data"
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState, updateIdx } from "../store"
+import { RootState, updateIdx } from "../../store"
 
 const SubMenu = () => {
   const {categoryIdx,menusIdx,menuIdx} = useSelector((state:RootState)=>state)

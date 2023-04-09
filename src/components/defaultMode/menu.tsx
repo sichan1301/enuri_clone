@@ -1,6 +1,6 @@
-import { category } from "../data/data"
+import { category } from "../../data/data"
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState, updateIdx } from "../store"
+import { RootState, updateIdx } from "../../store"
 import styled from "styled-components"
 
 const Menu = () => {

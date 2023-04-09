@@ -1,6 +1,6 @@
-import { category } from "../data/data"
+import { category } from "../../data/data"
 import { useSelector } from 'react-redux'
-import { RootState } from "../store"
+import { RootState } from "../../store"
 import styled from "styled-components"
 
 const Advertisement = () => {

@@ -1,25 +1,32 @@
 import './App.css';
+import { useDispatch } from 'react-redux';
+import { updateIdx } from './store';
+import { category } from './data/data';
+import { useState } from 'react';
 import styled from 'styled-components';
-import Category from './components/category';
-import Menu from './components/menu';
-import SubMenu from './components/subMenu';
-import Sub_SubMenu from './components/sub_subMenu';
-import Advertisement from './components/advertisement';
-import Service from './components/service';
+import DefaultMode from './components/defaultMode/defaultMode';
+import WholeMode from './components/wholeMode/wholeMode';
 
 function App() {
+  const [wholeMode,setWholeMode] = useState(false)
+  const dispatch = useDispatch()
+  const handleClick = () => {
+    setWholeMode(!wholeMode)
+  }
+  const handleMouseEnter = (e:React.MouseEvent,categoryIdx:number) =>{
+  dispatch(updateIdx({categoryIdx:categoryIdx}))
+  }
   return (
     <AppSection>
-      <Category />
-      <Section>
-        <MenuSection>
-          <Menu />
-          <SubMenu />
-          <Sub_SubMenu />
-          <Service />
-        </MenuSection>
-        <Advertisement />
-      </Section>
+      <CategoryDiv>
+        <WholeModeHeader onClick = {handleClick}>전체카테고리</WholeModeHeader>
+        {category.map((category,categoryIdx:number) => (
+          <h1 onMouseEnter = {(e) => {handleMouseEnter(e,categoryIdx)}}>{category.title}</h1>
+        ))}
+      </CategoryDiv>
+
+      {wholeMode ? <WholeMode /> : <DefaultMode />}
+
     </AppSection>
   );
 }
@@ -30,8 +37,10 @@ const AppSection = styled.section`
   display: flex;
   margin-right:50px;
 `
-const MenuSection = styled(AppSection)`
+
+const WholeModeHeader = styled.h1`
+  cursor:pointer;
 `
-const Section = styled(AppSection)`
+const CategoryDiv = styled(AppSection)`
   flex-direction: column;
 `

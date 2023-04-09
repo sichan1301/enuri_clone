@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import { category } from "../data/data"
+import { category } from "../../data/data"
 import { useDispatch, useSelector } from "react-redux"
-import { RootState, updateIdx } from "../store"
+import { RootState, updateIdx } from "../../store"
 
 const Service = () => {
   const {categoryIdx,imgIdx} = useSelector((state:RootState)=>state)
