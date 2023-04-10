@@ -16,7 +16,6 @@ const Service = () => {
   }
   return (
     <ServiceDiv>
-      
       <img alt={category[categoryIdx].imgSrc[imgIdx]} />
       <ImgSelect>{arr.map((item,imgIdx:number) => <span onMouseEnter = {(e)=>{handleImgMouseEnter(e,imgIdx)}}>{item}</span>)}</ImgSelect>
       <EtcUl>

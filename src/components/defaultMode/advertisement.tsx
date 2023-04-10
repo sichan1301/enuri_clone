@@ -7,7 +7,9 @@ const Advertisement = () => {
   const {categoryIdx} = useSelector((state:RootState)=>state)
   return(
     <AdUl>
-      {category[categoryIdx].ad.map(ad => <><span>{ad.type}</span> <li><a href={ad.link}>{ad.text}</a></li></>)}
+      {category[categoryIdx].ad.map(ad => <>
+        <span>{ad.type}</span> <li><a href={ad.link}>{ad.text}</a></li>
+      </>)}
     </AdUl>
   )
 }

@@ -13,6 +13,15 @@ const enuriIdx = createSlice({
   reducers: {
     updateIdx(state,action) {
       state = {...state, ...action.payload}
+    
+      if(Object.keys(action.payload)[0]==="categoryIdx"){
+          state.menusIdx = 0
+          state.menuIdx = 0
+          state.subMenuIdx = 0
+      } else if(Object.keys(action.payload)[0]==="menusIdx"){
+        state.subMenuIdx = 0;  
+      }
+
       return state
     },
     updateMode(state,action){
