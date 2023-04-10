@@ -17,7 +17,6 @@ const enuriIdx = createSlice({
     },
     updateMode(state,action){
       state.wholeMode = action.payload
-      
     }
   },
 })

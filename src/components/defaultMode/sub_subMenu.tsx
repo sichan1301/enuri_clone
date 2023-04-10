@@ -8,7 +8,8 @@ const Sub_SubMenu = () => {
 
   return(
     <SubSubMenuUl>
-      {category[categoryIdx].menus[menusIdx].menu[menuIdx].subMenu[subMenuIdx].sub_subMenu.map(sub_subMenu => <><li><a href={sub_subMenu.link}>{sub_subMenu.text}</a></li><span>{sub_subMenu.badge}</span></>)}
+      { category[categoryIdx].menus.length < subMenuIdx ? null :
+        category[categoryIdx].menus[menusIdx].menu[menuIdx].subMenu[subMenuIdx].sub_subMenu.map(sub_subMenu =>  <><li><a href={sub_subMenu.link}>{sub_subMenu.text}</a></li><span>{sub_subMenu.badge}</span></>)}
     </SubSubMenuUl>
   )
 }

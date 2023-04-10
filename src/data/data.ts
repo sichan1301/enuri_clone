@@ -436,8 +436,7 @@ export const category:CategoryType[] = [
                 link:"www.~.com",
                 badge:"",
                 sub_subMenu:[]
-              },
-
+              }
             ]
           },
           {
@@ -634,7 +633,6 @@ export const category:CategoryType[] = [
                   }
                 ]
               }
-              
             ]
           },
           {
@@ -1502,7 +1500,8 @@ export const category:CategoryType[] = [
                     badge:""
                   }
                 ]
-              },              {
+              },              
+              {
                 text:"USB케이블",
                 link:"www.~.com",
                 badge:"",

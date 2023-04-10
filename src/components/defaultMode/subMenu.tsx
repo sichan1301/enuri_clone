@@ -11,10 +11,14 @@ const SubMenu = () => {
   }
   
   return(
-    <ul>
-      <h3>{category[categoryIdx].menus[menusIdx].menu[menuIdx].title}</h3>
-      {category[categoryIdx].menus[menusIdx].menu[menuIdx].subMenu.map((subMenu,subMenuIdx:number) => <><li onMouseEnter={(e)=>{handleSubMenuMouseEnter(e,subMenuIdx)}}><a href={subMenu.link}>{subMenu.text}</a></li><span>{subMenu.badge}</span></>)}
-    </ul>
+    <>
+      {category[categoryIdx].menus[menusIdx].menu.length >= menuIdx  && 
+        <ul>
+            <h3>{category[categoryIdx].menus[menusIdx].menu[menuIdx].title}</h3>
+            {category[categoryIdx].menus[menusIdx].menu[menuIdx].subMenu.map((subMenu,subMenuIdx:number) => <><li onMouseEnter={(e)=>{handleSubMenuMouseEnter(e,subMenuIdx)}}><a href={subMenu.link}>{subMenu.text}</a></li><span>{subMenu.badge}</span></>)}  
+        </ul>
+      }
+    </>
   )
 }
 
