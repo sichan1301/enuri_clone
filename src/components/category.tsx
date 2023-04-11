@@ -1,39 +1,67 @@
-import { useDispatch, useSelector } from 'react-redux'
 import { category } from '../data/data';
+import { useState } from 'react';
 import styled from 'styled-components';
-import { RootState, updateIdx, updateMode } from '../store';
+import Menu from './defaultMode/menu';
+import WholeMode from './wholeMode/wholeMode';
+import Service from './defaultMode/service';
+import Advertisement from './defaultMode/advertisement';
 
 
 const Category = () => {
-  const dispatch = useDispatch()
-  const wholeMode = useSelector((state:RootState) => state.wholeMode)
+  const [categoryIdx, setCategoryIdx] = useState(0)
+  const [wholeMode,setWholeMode] = useState(false)
 
   const handleClick = () => {
-    dispatch(updateMode(!wholeMode))
+    setWholeMode(!wholeMode)
   }
 
   const handleMouseEnter = (e:React.MouseEvent,categoryIdx:number) =>{
-  dispatch(updateIdx({categoryIdx:categoryIdx}))
+    setCategoryIdx(categoryIdx)
   }
 
   return(
-    <CategoryDiv>
-      <WholeCategoryText onClick = {handleClick}>전체카테고리</WholeCategoryText>
-      {category.map((category,categoryIdx:number) => (
-        <h1 onMouseEnter = {(e) => {handleMouseEnter(e,categoryIdx)}}>{category.title}</h1>
-      ))}
-    </CategoryDiv>
+    <CategorySection>
+      <CategoryDiv>
+
+        <WholeCategoryText onClick = {handleClick}>전체카테고리</WholeCategoryText>
+
+        {category.map((category,categoryIdx:number) => (
+          <h1 onMouseEnter = {(e) => {handleMouseEnter(e,categoryIdx)}}>{category.title}</h1>
+        ))}
+      </CategoryDiv>
+
+      {wholeMode ? 
+      <WholeMode categoryIdx ={categoryIdx}/> : 
+      <DefaultMode>
+        <MenuServiceDiv>
+          <Menu Category = {category[categoryIdx]}/>
+          <Service category ={category[categoryIdx]}/>
+        </MenuServiceDiv>
+        <Advertisement category ={category[categoryIdx]}/>  
+      </DefaultMode>
+      }
+    </CategorySection>
   )
 }
 
 export default Category
 
+const CategorySection = styled.section`
+  position:relative;
+  display:flex;
+`
+
 const WholeCategoryText = styled.h1`
   cursor:pointer;
 `
-
 const CategoryDiv = styled.div`
   display:flex;
   flex-direction: column;
-  margin-right:50px;
+`
+
+const DefaultMode = styled(CategoryDiv)`
+`
+
+const MenuServiceDiv = styled.div`
+  display:flex;
 `

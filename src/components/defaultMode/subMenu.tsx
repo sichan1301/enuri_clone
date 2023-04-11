@@ -1,27 +1,47 @@
-import { category } from "../../data/data"
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState, updateIdx } from "../../store"
+import { menuType } from "../../data/dataType"
+import Sub_SubMenu from "./sub_subMenu"
+import styled from "styled-components"
+import { useState } from "react"
 
-const SubMenu = () => {
-  const {categoryIdx,menusIdx,menuIdx} = useSelector((state:RootState)=>state)
-  const dispatch = useDispatch()
+interface SubMenuProps {
+  Menu:menuType
+}
 
-  const handleSubMenuMouseEnter = (e:React.MouseEvent,subMenuIdx:number) =>{
-    dispatch(updateIdx({subMenuIdx:subMenuIdx}))
+const SubMenu = ({Menu}:SubMenuProps) => {
+  const [subMenuIdx, setSubMenuIdx] = useState(0)
+
+  const handleMouseEnter = (e:React.MouseEvent,subMenuIdx:number) => {
+    setSubMenuIdx(subMenuIdx)
   }
-  
+
   return(
-    <>
-      { 
-        <ul>
-            <h3>{category[categoryIdx].menus[menusIdx].menu[menuIdx].title}</h3>
-            {category[categoryIdx].menus[menusIdx].menu[menuIdx].subMenu.map((subMenu,subMenuIdx:number) => <>
-              <li onMouseEnter={(e)=>{handleSubMenuMouseEnter(e,subMenuIdx)}}><a href={subMenu.link}>{subMenu.text}</a></li><span>{subMenu.badge}</span>
-            </>)}  
-        </ul>
+    <SubMenuArticle>
+      {
+        <>
+          <h3>{Menu.title}</h3>
+          {Menu.subMenu.map((subMenu,subMenuIdx:number) => 
+            <SubMenuLi>
+              <li onMouseEnter={(e)=>{handleMouseEnter(e,subMenuIdx)}}><a href={subMenu.link}>{subMenu.text}</a></li><span>{subMenu.badge}</span>
+            </SubMenuLi>)}  
+        </>
       }
-    </>
+      {Menu.subMenu[subMenuIdx] && <Sub_SubMenu SubMenu = {Menu.subMenu[subMenuIdx]}/>}
+
+    </SubMenuArticle>
   )
+
 }
 
 export default SubMenu
+
+const SubMenuArticle = styled.article`
+  position:absolute;
+  right:-200%;
+  top:0;  
+`
+const SubMenuLi = styled.li`
+  display:flex;
+  li{
+    margin-right:5px;
+  }
+`

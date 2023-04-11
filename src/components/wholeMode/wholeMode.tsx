@@ -1,13 +1,13 @@
 import { category } from "../../data/data"
-import { useSelector } from 'react-redux'
-import { RootState } from "../../store"
 import styled from "styled-components"
 import { useEffect } from "react"
 import { menuType } from "../../data/dataType"
 
-const WholeMode = () => {
-  const {categoryIdx} = useSelector((state:RootState) => state)
-  // const filteredMenu = (category[categoryIdx].menus[0].menu).concat(category[categoryIdx].menus[1].menu).concat(category[categoryIdx].menus[2].menu).filter((item,idx:number)=> idx<12 )
+interface WholeModeProps {
+  categoryIdx:number
+}
+
+const WholeMode = ({categoryIdx}:WholeModeProps) => {
 
   let filteredArray:menuType[] = []
   let menusInitial = 0
@@ -25,11 +25,12 @@ const WholeMode = () => {
 
   return(
     <WholeModeSection>
-      {filteredArray.map(item => (<MenuDiv><h2>{item.title}</h2>
-        <ul>
-          {item.subMenu.map((item,idx:number) => (idx !== 0 && idx<10) && <li><a href={item.link}>{item.text}</a></li>)} <br />
-          {item.subMenu.length > 10 && < a href={item.subMenu[0].link}>더보기</a>}
-        </ul>
+      {filteredArray.map(item => (
+        <MenuDiv><h2>{item.title}</h2>
+          <ul>
+            {item.subMenu.map((item,idx:number) => (idx !== 0 && idx<10) && <li><a href={item.link}>{item.text}</a></li>)} <br />
+            {item.subMenu.length > 10 && < a href={item.subMenu[0].link}>더보기</a>}
+          </ul>
         </MenuDiv> 
       ))}
     </WholeModeSection>

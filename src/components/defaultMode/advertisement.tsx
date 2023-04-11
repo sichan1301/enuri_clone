@@ -2,12 +2,16 @@ import { category } from "../../data/data"
 import { useSelector } from 'react-redux'
 import { RootState } from "../../store"
 import styled from "styled-components"
+import { CategoryType } from "../../data/dataType"
 
-const Advertisement = () => {
-  const {categoryIdx} = useSelector((state:RootState)=>state)
+interface AdvertisementProps {
+  category:CategoryType
+}
+const Advertisement = ({category}:AdvertisementProps) => {
+
   return(
     <AdUl>
-      {category[categoryIdx].ad.map(ad => <>
+      {category.ad.map(ad => <>
         <span>{ad.type}</span> <li><a href={ad.link}>{ad.text}</a></li>
       </>)}
     </AdUl>

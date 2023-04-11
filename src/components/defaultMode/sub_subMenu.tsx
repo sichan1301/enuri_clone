@@ -1,17 +1,18 @@
-import { category } from "../../data/data"
-import { useSelector } from 'react-redux'
-import { RootState } from "../../store"
 import styled from "styled-components"
+import { subMenuType } from "../../data/dataType"
 
-const Sub_SubMenu = () => {
-  const {categoryIdx,menusIdx,menuIdx,subMenuIdx} = useSelector((state:RootState)=>state)
+interface SubSubMenuProps {
+  SubMenu:subMenuType
+}
 
+const Sub_SubMenu = ({SubMenu}:SubSubMenuProps) => {
   return(
     <SubSubMenuUl>
       { 
-        category[categoryIdx].menus[menusIdx].menu[menuIdx].subMenu[subMenuIdx].sub_subMenu.map(sub_subMenu =>  <>
-          <li><a href={sub_subMenu.link}>{sub_subMenu.text}</a></li><span>{sub_subMenu.badge}</span>
-        </>)}
+        SubMenu.sub_subMenu.map(sub_subMenu =>  
+          <SubSubMenuLi>
+            <li><a href={sub_subMenu.link}>{sub_subMenu.text}</a></li><span>{sub_subMenu.badge}</span>
+          </SubSubMenuLi>)}
     </SubSubMenuUl>
   )
 }
@@ -19,5 +20,11 @@ const Sub_SubMenu = () => {
 export default Sub_SubMenu
 
 const SubSubMenuUl = styled.ul`
-  width:200px;
+  position:absolute;
+  right:-100%;
+  top:0;
+`
+
+const SubSubMenuLi = styled.li`
+  display:flex;
 `

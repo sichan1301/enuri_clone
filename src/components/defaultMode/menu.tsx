@@ -1,36 +1,48 @@
-import { category } from "../../data/data"
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState, updateIdx } from "../../store"
 import styled from "styled-components"
+import { CategoryType } from "../../data/dataType"
+import SubMenu from "./subMenu"
+import { useEffect, useState } from "react"
 
-const Menu = () => {
-  const {categoryIdx} = useSelector((state:RootState)=>state)
-  const dispatch = useDispatch()
+interface MenuProps {
+  Category:CategoryType
+}
 
-  const handleMenuMouseEnter = (e:React.MouseEvent,menusIdx:number,menuIdx:number) =>{
-    dispatch(updateIdx({
-      menusIdx:menusIdx,
-      menuIdx:menuIdx
-    }))
+const Menu = ({Category}:MenuProps) => {
+  const [menusIdx,setMenusIdx] = useState(0)
+  const [menuIdx,setMenuIdx] = useState(0)
+
+  const handleMouseEnter = (e:React.MouseEvent,menusIdx:number, menuIdx:number) => {
+    setMenusIdx(menusIdx)
+    setMenuIdx(menuIdx)
   }
   
   return(
-    <MenuDiv>
+    <MenuArticle>
       {
-        category[categoryIdx].menus.map((menus,menusIdx:number) => (<>
-          <h3>{menus.title}</h3>
-          {menus.menu.map((menu,menuIdx:number) => <li onMouseEnter = {(e)=>{handleMenuMouseEnter(e,menusIdx,menuIdx)}}>{menu.title}</li>)}
-        </>))
+        Category.menus.map((menus,menusIdx:number) => (
+          <>
+            <h3>{menus.title}</h3>
+            {menus.menu.map((menu,menuIdx:number) => 
+              <MenuDiv>
+                <li onMouseEnter={(e)=>{handleMouseEnter(e,menusIdx,menuIdx)}}>{menu.title}</li>
+              </MenuDiv>
+            )}
+          </>
+        ))
       }
-      
-    </MenuDiv>
+    {Category.menus[menusIdx].menu[menuIdx] && <SubMenu Menu = {Category.menus[menusIdx].menu[menuIdx]}/>}
+    </MenuArticle>
   )
 }
 
 export default Menu
 
-const MenuDiv = styled.div`
+const MenuArticle = styled.div`
+  position:relative;
   display: flex;
   flex-direction: column;
-  margin-right:50px;
+`
+const MenuDiv = styled.div`
+  display:flex;
+  flex-direction:column;
 `
