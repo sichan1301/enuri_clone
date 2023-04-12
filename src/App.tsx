@@ -1,6 +1,4 @@
 import './App.css';
-import { useSelector } from 'react-redux';
-import { RootState } from './store';
 import styled from 'styled-components';
 import Category from './components/category';
 

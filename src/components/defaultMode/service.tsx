@@ -1,7 +1,4 @@
 import styled from "styled-components"
-import { category } from "../../data/data"
-import { useDispatch, useSelector } from "react-redux"
-import { RootState, updateIdx } from "../../store"
 import { useState } from "react"
 import { CategoryType } from "../../data/dataType"
 
@@ -33,8 +30,7 @@ const Service = ({category}:ServiceProps) => {
 export default Service
 
 const ServiceDiv = styled.div`
-  position:absolute;
-  right:500px;
+  width: 250px;
   display:flex;
   flex-direction: column;
   img{

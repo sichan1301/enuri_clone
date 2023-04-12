@@ -22,16 +22,11 @@ const Category = () => {
   return(
     <CategorySection>
       <CategoryDiv>
-
         <WholeCategoryText onClick = {handleClick}>전체카테고리</WholeCategoryText>
-
-        {category.map((category,categoryIdx:number) => (
-          <h1 onMouseEnter = {(e) => {handleMouseEnter(e,categoryIdx)}}>{category.title}</h1>
-        ))}
+        {category.map((category,categoryIdx:number) => (<h1 onMouseEnter = {(e) => {handleMouseEnter(e,categoryIdx)}}>{category.title}</h1>))}
       </CategoryDiv>
 
-      {wholeMode ? 
-      <WholeMode categoryIdx ={categoryIdx}/> : 
+      {wholeMode ? <WholeMode categoryIdx ={categoryIdx}/> : 
       <DefaultMode>
         <MenuServiceDiv>
           <Menu Category = {category[categoryIdx]}/>
@@ -64,4 +59,5 @@ const DefaultMode = styled(CategoryDiv)`
 
 const MenuServiceDiv = styled.div`
   display:flex;
+  width: 1000px;
 `

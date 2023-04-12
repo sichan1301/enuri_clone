@@ -17,13 +17,13 @@ const SubMenu = ({Menu}:SubMenuProps) => {
   return(
     <SubMenuArticle>
       {
-        <>
+        <div style={{width: "250px"}}>
           <h3>{Menu.title}</h3>
           {Menu.subMenu.map((subMenu,subMenuIdx:number) => 
             <SubMenuLi>
               <li onMouseEnter={(e)=>{handleMouseEnter(e,subMenuIdx)}}><a href={subMenu.link}>{subMenu.text}</a></li><span>{subMenu.badge}</span>
             </SubMenuLi>)}  
-        </>
+        </div>
       }
       {Menu.subMenu[subMenuIdx] && <Sub_SubMenu SubMenu = {Menu.subMenu[subMenuIdx]}/>}
 
@@ -35,9 +35,7 @@ const SubMenu = ({Menu}:SubMenuProps) => {
 export default SubMenu
 
 const SubMenuArticle = styled.article`
-  position:absolute;
-  right:-200%;
-  top:0;  
+  display: flex;
 `
 const SubMenuLi = styled.li`
   display:flex;

@@ -1,6 +1,3 @@
-import { category } from "../../data/data"
-import { useSelector } from 'react-redux'
-import { RootState } from "../../store"
 import styled from "styled-components"
 import { CategoryType } from "../../data/dataType"
 
@@ -12,7 +9,7 @@ const Advertisement = ({category}:AdvertisementProps) => {
   return(
     <AdUl>
       {category.ad.map(ad => <>
-        <span>{ad.type}</span> <li><a href={ad.link}>{ad.text}</a></li>
+       <li><a href={ad.link}>{ad.type}</a></li>
       </>)}
     </AdUl>
   )
@@ -21,12 +18,13 @@ const Advertisement = ({category}:AdvertisementProps) => {
 export default Advertisement
 
 const AdUl = styled.ul`
-  display: flex;
-  align-items:center;
-  flex-wrap: wrap;
+  /* display: flex; */
+  /* align-items:center; */
+  /* flex-wrap: wrap; */
   li{
     font-size:14px;
     list-style: none;
     margin:5px 25px;
+    display:inline;
   }
 `
