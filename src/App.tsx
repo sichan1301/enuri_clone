@@ -14,5 +14,4 @@ export default App;
 
 const AppSection = styled.section`
   display: flex;
-  margin-right:50px;
 `

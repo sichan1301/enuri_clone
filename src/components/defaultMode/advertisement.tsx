@@ -9,7 +9,7 @@ const Advertisement = ({category}:AdvertisementProps) => {
   return(
     <AdUl>
       {category.ad.map(ad => <>
-       <li><a href={ad.link}>{ad.type}</a></li>
+       <li><a href={ad.link}>{ad.text}</a></li>
       </>)}
     </AdUl>
   )
@@ -18,13 +18,13 @@ const Advertisement = ({category}:AdvertisementProps) => {
 export default Advertisement
 
 const AdUl = styled.ul`
-  /* display: flex; */
-  /* align-items:center; */
-  /* flex-wrap: wrap; */
+  display: flex;
+  align-items:center; 
+  flex-wrap: wrap;
   li{
     font-size:14px;
     list-style: none;
     margin:5px 25px;
-    display:inline;
+    /* display:inline; */
   }
 `

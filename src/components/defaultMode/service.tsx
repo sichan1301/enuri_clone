@@ -15,39 +15,32 @@ const Service = ({category}:ServiceProps) => {
   }
   
   return (
-    <ServiceDiv>
-      <img alt={category.imgSrc[currentImg]} />
-      <ImgSelect>{arr.map((item,imgIdx:number) => <span onMouseEnter = {(e)=>{handleImgMouseEnter(e,imgIdx)}}>{item}</span>)}</ImgSelect>
+    <div>
+      <div style={{height:"200px"}}>
+        <img alt={category.imgSrc[currentImg]} />
+      </div>
+      <div>{arr.map((item,imgIdx:number) => <Span onMouseEnter = {(e)=>{handleImgMouseEnter(e,imgIdx)}}>{item}</Span>)}</div>
       <EtcUl>
         <li><a href="www.~~.com">여행</a></li>
         <li><a href="www.~~.com">꽃배달</a></li>
         <li><a href="www.~~.com">이사</a></li>
       </EtcUl>
-    </ServiceDiv>
+    </div>
   )
 }
 
 export default Service
 
-const ServiceDiv = styled.div`
-  width: 250px;
-  display:flex;
-  flex-direction: column;
-  img{
-    height:150px;
-  }
-`
-
-const ImgSelect = styled.div`
-  display:flex;
-  span{
-    margin-right:5px;
-  }
+const Span = styled.span`
+  display:inline;
+  margin-right:5px;
 `
 
 const EtcUl = styled.ul`
   display:flex;
+  padding:0;
   li{
+    display:inline;
     margin:10px;
   }
 `
